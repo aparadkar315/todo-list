@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<body>
+    <div id="container">
+        <div class="title"></div>
+        <div class="containerOne">
+            <aside class="lists">
+                <div class="createListContainer">
+                    <header class="createList">
+                        <div>My Lists</div>
+                        
+                        <button id="createListButton">+</button>
+                    </header>
+                </div>
+            </aside>
+            <main class="listItems"></main>
+            <div class="subtasks"></div>
+        </div>
+    </div>
+    <dialog id="myListsDialog" closedby="any">
+        <form>
+            <p>
+                <input id="dialogInput" type="text" value="" placeholder="Add a list title">
+            </p>
+            <div>
+                <button id="confirmBtn" value="default">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+</html>

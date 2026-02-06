@@ -2,7 +2,7 @@ import "./style.css";
 import { compareAsc, format} from "date-fns";
 import {Listoflist, CreateList, Task} from "./listoflist.js";
 
-const rootList = new Listoflist();//object where all lists are stored
+let rootList = new Listoflist();//object where all lists are stored
 
 const myListsDialog = document.querySelector("#myListsDialog");
 const createListBtn = document.querySelector("#createListButton");
@@ -23,7 +23,11 @@ const priorityBtn = document.querySelector("#priorityBtn");
 const displayTaskInfoOne = document.querySelector(".displayTaskInfoOne");
 const displayTaskHeaderContainer = document.querySelector(".displayTaskHeaderContainer");
 const btnContainer = document.querySelector(".btnContainer");
-//const describe = document.querySelector(".description");
+const describe = document.querySelector("#description");
+const delListBtn = document.querySelector(".delListBtn");
+
+defaultList();
+defaultTask();
 
 //Add and display all the lists
 createListBtn.addEventListener("click", () => {
@@ -40,29 +44,44 @@ function confirmBtnHandler(event) {
 
 
 function dialogCloseHandler() {
+    if(myListsDialog.returnValue !== ""){
       const div = createNewElement(createListContainer, "div", "dialogDiv");
       const btn = createNewElement(div, "button", "view");
       btn.textContent = myListsDialog.returnValue;
       btn.addEventListener("click", viewList);
       btn.addEventListener("click", selectList);
+      div.id = `${myListsDialog.returnValue}`;
       input.value = "";
+      }
 }
 
 
 //Add and display all the tasks
 function viewList(e) {
     listHeader.textContent = e.target.textContent;
-    if(rootList[listHeader.textContent][displayTaskHeader.textContent === undefined]){
+    if(rootList[listHeader.textContent][displayTaskHeader.textContent] === undefined){
         displayTaskHeader.textContent = "";
     }
     viewAllTasks();
-    displayTaskInfoOne.textContent = "Description";
     e.target.addEventListener("click", (event) => {
         const defTask = document.querySelector("#labelId1");
         if(defTask) {
             defTask.click();
         }
     });
+    createDescription();
+}
+
+function deleteList() {
+    //localStorage.removeItem(rootList[listHeader.textContent]);
+    if(listHeader.textContent !== "Today" && listHeader.textContent !== ""){
+    delete rootList[listHeader.textContent];
+    const divId = document.querySelector(`#${listHeader.textContent}`);
+    createListContainer.removeChild(divId);
+    listHeader.textContent = "";
+    displayListItems.textContent = "";
+    describe.textContent = "";
+    }
 }
 
 
@@ -77,6 +96,7 @@ function viewAllTasks() {
         const checkbox = createNewElement(p, "input", `taskCheckBox`);
         checkbox.type = "checkbox";
         checkbox.id =`inputId${i}`;
+
 
         const label = createNewElement(p, "label", `taskLabel`);
         label.for = `inputId${i}`;
@@ -97,11 +117,11 @@ function viewAllTasks() {
 
         switch(rootList[listHeader.textContent][key].priority){
            
-            case "High": label.setAttribute("style", "color: #012A4A;");
+            case "High": label.setAttribute("style", "color: #800080;");
             break;
-            case "Medium": label.setAttribute("style", "color: #014F86;");
+            case "Medium": label.setAttribute("style", "color: #7F00FF;");
             break;
-            case "Low": label.setAttribute("style", "color: rgb(75, 153, 158);");
+            case "Low": label.setAttribute("style", "color: #E30B5C;");
             break;
             default : label.setAttribute("style", "color: black;");
         }
@@ -111,40 +131,40 @@ function viewAllTasks() {
 
 
 function isEmpty(obj) {
-    return Object.keys(obj).length === 0;
+  for (const prop in obj) {
+    if (Object.hasOwn(obj, prop)) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 
 function addTaskBtnHandler() {
-    if (isEmpty(rootList)){
-        alert("Please select a list from 'My Lists' to add this task to.  You can create a list by clicking on the  '+'  icon besides 'My Lists'");
-        return;
-    }else{
     const taskName = taskInput.value;
-    rootList[listHeader.textContent][taskName] = new Task();
-    viewAllTasks();
-    taskInput.value = "";
+    if(taskName !== ""){
+        rootList[listHeader.textContent][taskName] = new Task();
+        viewAllTasks();
+        taskInput.value = "";
+        }
     }
-}
+
 
 
 //Add and display task info
 function clickOnTaskHandler(e) {
        btnContainer.textContent = "";
        displayTaskHeader.textContent = `${e.target.textContent}`;
-       displayTaskInfoOne.innerHTML = "";
-       displayTaskInfoOne.textContent = "Description";
        const del = createNewElement(btnContainer, "button", "deleteBtn");
        del.textContent = "Delete Task";
        del.addEventListener("click", deleteTask);
-       createDescriptionContainer();
+       createDescription();
        //describe.textContent = rootList[listHeader.textContent][displayTaskHeader.textContent].description;
 }
 
 function deleteTask() {
     delete rootList[listHeader.textContent][displayTaskHeader.textContent];
-    displayTaskInfoOne.textContent = "Description";
-    const describe = createNewElement(displayTaskInfoOne, "p", "describe");
     describe.textContent = "";
     displayTaskHeader.textContent = "";
     viewAllTasks();
@@ -155,25 +175,22 @@ function deleteTask() {
 function addTaskDescription() {
     
     rootList[listHeader.textContent][displayTaskHeader.textContent].description = textArea.value;
-    displayTaskInfoOne.innerHTML = "";
-    displayTaskInfoOne.textContent = "Description";
-    createDescriptionContainer();
+    createDescription();
     textArea.value = "";
-
-
     console.log(rootList[listHeader.textContent][displayTaskHeader.textContent].description);
 }
 
 
-function createDescriptionContainer() {
-    const describe = createNewElement(displayTaskInfoOne, "p", "describe");
-    if(rootList[listHeader.textContent][displayTaskHeader.textContent].description === undefined){
-        describe.textContent = "Add Task Description";
-        describe.setAttribute("style", "color: grey;");
-    }else{
+function createDescription() {
+    if(displayTaskHeader.textContent === ""){
+        describe.textContent = "";
+    }else if(rootList[listHeader.textContent][displayTaskHeader.textContent].description !== undefined){
         describe.textContent = rootList[listHeader.textContent][displayTaskHeader.textContent].description;
+        }else{
+            describe.textContent = "Add Task Description";
         }
-    console.log(rootList[listHeader.textContent][displayTaskHeader.textContent].description);
+    
+    //console.log(rootList[listHeader.textContent][displayTaskHeader.textContent].description);
 }
 
 
@@ -195,39 +212,44 @@ function setPriority() {
 
 
 
+
 function defaultList() {
+    const firstList = "Today";
+    rootList[firstList] = new CreateList();
     const div = createNewElement(createListContainer, "div", "defaultListdiv");
     const btn = createNewElement(div, "button", "view");
-    btn.textContent = "Today";
-    listHeader.textContent = "Today";
-    rootList[btn.textContent] = new CreateList();
+    btn.textContent = firstList;
     btn.addEventListener("click", viewList);
     btn.addEventListener("click", selectList);
-    document.addEventListener("DOMContentLoaded", (event) => {
-        if(btn) {
-            btn.click();
-        }
-    });
+    listHeader.textContent = firstList;
     
 }
+
 
 
 function defaultTask() {
     const firstTask = "Create your first task";
     const firstDescription = "Start by adding your very first task. It can be anything you want to get done today—big or small.";
+    rootList[listHeader.textContent][firstTask] = new Task();
+    rootList[listHeader.textContent][firstTask].description = firstDescription;
     displayTaskHeader.textContent = firstTask;
-    rootList[listHeader.textContent][displayTaskHeader.textContent] = new Task();
-    viewAllTasks();
+    const btn = document.querySelector(".view");
+    document.addEventListener("DOMContentLoaded", (event) => {
+        if(btn) {
+            btn.click();
+        }});
     const view = document.querySelector(".view");
     view.addEventListener("click", (event) => {
-        const defTask = document.querySelector(".taskLabel");
+        const defTask = document.querySelector("#labelId1");
         if(defTask) {
             defTask.click();
         }
     });
-    rootList[listHeader.textContent][displayTaskHeader.textContent].description = firstDescription;
+    viewAllTasks();
+    createDescription();
+    
     console.log(rootList[listHeader.textContent][displayTaskHeader.textContent].description);
-    createDescriptionContainer();
+    
     
 }
 
@@ -264,24 +286,62 @@ addTaskBtn.addEventListener("click", addTaskBtnHandler);
 textAreaBtn.addEventListener("click", addTaskDescription);
 dueDateBtn.addEventListener("click", addTaskDueDate);
 priorityBtn.addEventListener("click", setPriority);
-defaultList();
-defaultTask();
+delListBtn.addEventListener("click", deleteList);
 
 /*
+
 function populateStorage() {
     localStorage.setItem("list", JSON.stringify(rootList));
-
-    setList();
 }
+
+setList();
+
+window.addEventListener("beforeunload", populateStorage);
 
 function setList() {
+    
+    console.log(JSON.parse(localStorage.getItem("list")))
     rootList = JSON.parse(localStorage.getItem("list"));
-}
+    
+    const keys = Object.keys(rootList);
+    console.log(keys);
+    let i = 0;
+    keys.forEach(key => {
+        i++;
+        const div = createNewElement(createListContainer, "div", "dialogDiv");
+        const btn = createNewElement(div, "button", "view");
+        btn.textContent = key;
+        btn.addEventListener("click", viewList);
+        btn.addEventListener("click", selectList);
+        document.addEventListener("DOMContentLoaded", (event) => {
+        if(i === 1) {
+            btn.click();
+        }
+    });
+        btn.addEventListener("click", (event) => {
+        const defTask = document.querySelector("#labelId1");
+        if(defTask) {
+            defTask.click();
+        }
+    });
+    })
+    }
+
+
+
+createDefaultList();
+populateStorage();
+setList();
+
 
 if(!localStorage.getItem("list")){
+    defaultList();
+    defaultTask();
     populateStorage();
 } else {
     setList();
-}*/
+}
+
+window.addEventListener("beforeunload", populateStorage); */
 
 

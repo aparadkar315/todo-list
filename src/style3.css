@@ -1,0 +1,108 @@
+.listItems {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+
+
+
+.displayListItems {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    width: 100%;
+    overflow: scroll;
+    scrollbar-width: none;
+    box-sizing: border-box;
+    background-color: aqua;
+}
+
+.displayListHeader, .createList {
+    height: 30px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin: 5px;
+}
+
+.displayListHeader::before {
+    background-image: url('./todo1.png');
+    background-size: cover;
+    display: inline-block;
+    width: 40px; 
+    height: 40px;
+    content:"";
+    vertical-align: middle;
+    margin-right: 10px;
+    
+}
+
+
+
+.listItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#taskInput {
+    margin: 10px 10px 20px 10px;
+    height: 30px;
+    width: 75%;
+    outline-color: grey;
+    font-size: 1.1rem;
+    font-weight: 900;
+}
+
+#addTaskBtn {
+    width: 17%;
+    height: 37px;
+    border-radius: 10px;
+    background-color: rgb(75, 153, 158);
+    color: #ffffff;
+    border: none;
+    font-weight: 900;
+}
+
+#addTaskBtn:active {
+    background-color: rgb(118, 200, 228);
+    color: rgb(31, 31, 94);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#listHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.taskContainer {
+    display: flex;
+    gap: 10px; 
+}
+
+.delListBtn {
+    height: 30px;
+    width: 100px;
+    background-color: rgb(75, 153, 158);
+    margin-right: 20px;
+    margin-top: 20px;
+    color: #ffffff;
+    font-weight: 900;
+}
+
+.taskLabel {
+    display: flex;
+    width: 73%;
+    color: rgb(75, 153, 158);
+    height: 25px;
+    align-items: center;
+    font-size: 1.3rem;
+    padding-left: 5px;
+    font-weight: 900;
+}
+
+.taskLabel.selected {
+    border: 2px solid rgb(75, 153, 158);
+    border-radius: 5px;
+}

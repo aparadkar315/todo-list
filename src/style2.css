@@ -1,0 +1,104 @@
+.lists {
+    background-color:rgb(75, 153, 158);
+    color: #ffffff;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.createListContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.createList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#svgContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+#createListButton {
+    width: 30px;
+    height: 30px;
+    font-weight: 900;
+    font-size: 1.5rem;
+    background-color: rgb(75, 153, 158);
+    color: #ffffff;
+    border: none;
+}
+
+dialog {
+    height: 150px;
+    width: 450px;
+    border-radius: 15px;
+    border: none;
+}
+
+#dialogInput {
+    width: 100%;
+    height: 35px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-weight: 900;
+    font-size: 1.3rem;
+    border: none;
+    outline: none;
+}
+
+.dialogDiv {
+    margin-left: 20px;
+}
+
+#confirmBtn {
+    width: 30%;
+    height: 35px;
+    margin-top: 20px;
+    margin-left: 310px;
+    border: none;
+    border-radius: 30px;
+    background-color: rgb(7, 137, 243);
+    color: white;
+    font-weight: 900;
+}
+
+::backdrop {
+    background-color: rgb(7, 137, 243);
+    opacity: 0.75;
+}
+
+
+.view {
+    margin-right: 20px;
+    width: 90%;
+    height: 100%;
+    border: none;
+    color: #ffffff;
+    text-align: start;
+    background-color:rgb(75, 153, 158);
+    font-size: 1.1rem;
+}
+
+
+
+.view.selected, .view:hover {
+    background-color: #ffffff;
+    color: rgb(31, 31, 94);;
+    border-radius: 5px;
+}
+
+.view:hover {
+    background-color: rgb(118, 200, 228);
+    box-shadow: none;
+}
+
+.defaultListDiv {
+    margin-left: 20px;
+}

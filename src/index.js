@@ -1,6 +1,10 @@
 import "./style.css";
+import "./style2.css";
+import "./style3.css";
+import "./style4.css";
+
 import { compareAsc, format} from "date-fns";
-import {Listoflist, CreateList, Task} from "./listoflist.js";
+import {Listoflist, CreateList, Task} from "./list.js";
 
 let rootList = new Listoflist();//object where all lists are stored
 
@@ -216,7 +220,7 @@ function setPriority() {
 function defaultList() {
     const firstList = "Today";
     rootList[firstList] = new CreateList();
-    const div = createNewElement(createListContainer, "div", "defaultListdiv");
+    const div = createNewElement(createListContainer, "div", "defaultListDiv");
     const btn = createNewElement(div, "button", "view");
     btn.textContent = firstList;
     btn.addEventListener("click", viewList);
@@ -287,6 +291,8 @@ textAreaBtn.addEventListener("click", addTaskDescription);
 dueDateBtn.addEventListener("click", addTaskDueDate);
 priorityBtn.addEventListener("click", setPriority);
 delListBtn.addEventListener("click", deleteList);
+
+
 
 /*
 

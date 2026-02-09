@@ -3,6 +3,7 @@
     color: #ffffff;
     border-radius: 10px;
     padding-left: 10px;
+    min-width: 300px;
 }
 
 .createListContainer {
@@ -10,6 +11,9 @@
     flex-direction: column;
     gap: 10px;
     margin-top: 20px;
+    overflow: scroll;
+    scrollbar-width: none;
+    height: 82vh;
 }
 
 .createList {
@@ -90,7 +94,7 @@ dialog {
 
 .view.selected, .view:hover {
     background-color: #ffffff;
-    color: rgb(31, 31, 94);;
+    color: rgb(31, 31, 94);
     border-radius: 5px;
 }
 

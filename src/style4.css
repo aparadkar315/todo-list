@@ -3,6 +3,8 @@
     flex-direction: column;
     border-radius: 10px;
     gap: 10px;
+    min-width: 700px;
+    min-height: 800px;
 }
 
 .displayTaskHeaderContainer {
@@ -44,7 +46,7 @@
     position: relative;   
 }
 
-.clock {
+.sticker {
     position: absolute;
     top: 50px;
     right: 10px;
@@ -68,14 +70,19 @@
     padding: 10px;
     margin-top: 15px;
     margin-left: 25px;
-    height: 76%;
-    width: 90%;
+    height: 28vh;
+    min-height: 250px;
+    width: 33vw;
+    min-width: 620px;
     border-radius: 10px;
     font-size: 1.3rem;
     color: black;
     font-weight: 500;
     font-family:Arial, Helvetica, sans-serif;
     font-style: italic;
+    overflow: scroll;
+    scrollbar-width: none;
+    flex-wrap: wrap;
 }
 
 #descriptionContainer, #dueDateContainer, #priorityContainer {
@@ -107,8 +114,8 @@
     align-self: center;
     width: 20%;
     height: 100%;
-    color: rgb(75, 153, 158);
-    
+    color: rgb(31, 31, 94);
+    font-weight: 900;
 }
 
 #textArea {

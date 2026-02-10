@@ -1,9 +1,9 @@
 .taskInfo {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 5fr 5fr;
+    grid-template-columns: minmax(650px, 1fr);
     border-radius: 10px;
     gap: 10px;
-
 }
 
 .displayTaskHeaderContainer {
@@ -12,27 +12,14 @@
     font-size: 1.5rem;
     align-items: center;
     padding : 20px;
-    height: 5%;
-    max-width: 100%;
     background-color:rgb(75, 153, 158);
     border-radius: 10px;
     font-weight: 900;
     color: #ffffff;
 }
 
-
-.displayTaskInfo {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    height: 95%;
-    gap: 10px;
-    max-width: 100%;
-}
-
 .displayTaskInfoOne {
     background-color:rgb(75, 153, 158);
-    padding: 5px;
-    padding-top: 10px;
     font-size: 1.5rem;
     font-weight: 900;
     color: #ffffff;
@@ -53,7 +40,6 @@
     right: 10px;
 }
 
-
 .displayTaskInfoTwo label {
     color:#ffffff
 }
@@ -61,20 +47,17 @@
 #descriptionHeader {
     display: flex;
     justify-content: center;
+    padding: 10px;
 }
 
 #description {
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-self: center;
+    align-self: center;
     background-color: #ffffff;
     padding: 10px;
-    margin-top: 15px;
-    margin-left: 25px;
-    height: 28vh;
-    min-height: 250px;
-    width: 33vw;
-    min-width: 620px;
     border-radius: 10px;
     font-size: 1.3rem;
     color: black;
@@ -84,6 +67,8 @@
     overflow: scroll;
     scrollbar-width: none;
     flex-wrap: wrap;
+    height: 70%;
+    width: 85%;
 }
 
 #descriptionContainer, #dueDateContainer, #priorityContainer {

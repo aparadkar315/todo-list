@@ -6,25 +6,20 @@
     border-radius: 10px;
     padding-left: 20px;
     min-width: 600px;
-    max-height: 100%;
 }
 
 .displayListItems {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    max-height: 65vh;
-    height: 65vh;
-    width: 35vw;
     overflow: scroll;
     scrollbar-width: none;
     box-sizing: border-box;
     margin-top: 10px;
-    min-width: 550px;
+    height: 600px;
 }
 
 .displayListHeader, .createList {
-    height: 30px;
     font-size: 1.5rem;
     font-weight: 900;
     margin: 5px;
@@ -71,7 +66,6 @@
     justify-content: space-between;
     align-items: center;
 }
-
 
 .taskContainer {
     display: flex;

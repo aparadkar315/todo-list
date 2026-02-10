@@ -3,9 +3,7 @@
     color: #ffffff;
     border-radius: 10px;
     padding-left: 10px;
-    min-width: 300px;
-    max-height: 100%;
-    max-width: 100%;
+    min-width: 400px;
 }
 
 .createListContainer {
@@ -15,7 +13,7 @@
     margin-top: 20px;
     overflow: scroll;
     scrollbar-width: none;
-    height: 82vh;
+    height: 750px;
 }
 
 .createList {
@@ -80,7 +78,6 @@ dialog {
     opacity: 0.75;
 }
 
-
 .view {
     margin-right: 20px;
     width: 90%;
@@ -91,8 +88,6 @@ dialog {
     background-color:rgb(75, 153, 158);
     font-size: 1.1rem;
 }
-
-
 
 .view.selected, .view:hover {
     background-color: #ffffff;

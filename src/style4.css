@@ -78,6 +78,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 3.5%;
 }
 
 
@@ -88,7 +89,6 @@
 .displayTaskInfoTwo label {
     font-weight: 900;
     font-size: 1.2rem;
-    margin-top: 10px;
 }
 
 #dueDate, #priority {

@@ -3,6 +3,7 @@
     display: grid;
     flex-direction: column;
     height: 100vh;
+    min-height: 900px;
     width: 100vw;
     box-sizing: border-box;
     grid-template-rows: 1fr 14fr 0.5fr;

@@ -3,7 +3,7 @@
     grid-template-rows: 1fr 5fr 5fr;
     grid-template-columns: minmax(650px, 1fr);
     border-radius: 10px;
-    gap: 10px;
+    gap: 0.5rem;
 }
 
 .displayTaskHeaderContainer {
@@ -11,7 +11,7 @@
     justify-content: space-between;
     font-size: 1.5rem;
     align-items: center;
-    padding : 20px;
+    padding : 1rem;
     background-color:rgb(75, 153, 158);
     border-radius: 10px;
     font-weight: 900;
@@ -28,7 +28,7 @@
 
 .displayTaskInfoTwo {
     background-color:rgb(75, 153, 158);
-    padding-left: 30px;
+    padding-left: 1.5rem;
     border-radius: 10px;
     color: rgb(75, 153, 158);
     position: relative;   
@@ -47,7 +47,7 @@
 #descriptionHeader {
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 0.5rem;
 }
 
 #description {
@@ -57,8 +57,8 @@
     justify-self: center;
     align-self: center;
     background-color: #ffffff;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 1rem;
+    border-radius: 0.5rem;
     font-size: 1.3rem;
     color: black;
     font-weight: 500;
@@ -84,7 +84,7 @@
 
 .displayTaskInfoTwo label {
     font-weight: 900;
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 #dueDate, #priority {

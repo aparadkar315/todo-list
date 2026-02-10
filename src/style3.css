@@ -5,7 +5,7 @@
     background-color: #ffffff;
     border-radius: 10px;
     padding-left: 20px;
-    min-width: max(500px,60vw);
+    min-width: 450px;
 }
 
 .displayListItems {

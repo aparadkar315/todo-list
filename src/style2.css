@@ -3,7 +3,7 @@
     color: #ffffff;
     border-radius: 10px;
     padding-left: 10px;
-    min-width: max(300px,40vw);
+    min-width: 350px;
 }
 
 .createListContainer {

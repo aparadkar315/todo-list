@@ -1,22 +1,25 @@
 .listItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #ffffff;
     border-radius: 10px;
     padding-left: 20px;
     min-width: 600px;
+    max-height: 100%;
 }
-
-
 
 .displayListItems {
     display: flex;
     flex-direction: column;
-    height: 70vh;
-    min-height: 700px;
+    justify-content: start;
+    max-height: 65vh;
+    height: 65vh;
     width: 35vw;
     overflow: scroll;
     scrollbar-width: none;
     box-sizing: border-box;
-    margin-top: 50px;
+    margin-top: 10px;
     min-width: 550px;
 }
 
@@ -36,15 +39,6 @@
     content:"";
     vertical-align: middle;
     margin-right: 10px;
-    
-}
-
-
-
-.listItems {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 #taskInput {
